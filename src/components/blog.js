@@ -3,9 +3,7 @@ import React,{ useState, useEffect } from "react";
 export default function Restaurant(){
     const [blogs, setBlogs] = useState([]);
 
-    useEffect(()=>{
-        getBlogs();
-    },[])
+    
     
     const getBlogs= ()=>{
         axios.get("http://localhost:3001/blogs")
@@ -22,11 +20,16 @@ export default function Restaurant(){
         <div>
             <button onClick={getBlogs}>Get</button>
             { blogs.map(
-                blog=>(
-                    <div key={blog.postName}>
-                        { blog }
+                (blog,i)=>{
+                return(
+                    <div key={i}>
+                    { blog.postName }<br></br>
+                    { blog.authorName }<br></br>
+                    { blog.createdAt }<br></br>
+                    { blog.text }<br></br>
                     </div>
                 )
+                }
             )}
         </div>
     )
