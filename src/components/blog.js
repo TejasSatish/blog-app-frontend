@@ -25,7 +25,8 @@ export default function Blog(){
                     return(
                         <div class="row row-cols-1 g-3" key={i}>
                             <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                <img class="bd-placeholder-img card-img-top" src={blog.image} alt="Thumbnail" width="100%" height="225"  preserveAspectRatio="xMidYMid slice" focusable="false">
+                                </img>
                                 <div class="card-body">
                                     <h3 className="mb-0">{ blog.postName }</h3>
                                     <small class="text-body-secondary">{ blog.authorName }</small>
