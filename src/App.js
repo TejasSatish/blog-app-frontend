@@ -1,16 +1,12 @@
 
 import React, { useEffect, useState } from "react";
-import Restaurant from "./components/blog";
+import Blog from "./components/blog";
+import Navbar from "./components/navbar";
 function App() {
-  
-
-
-
   return (
     <div>
-      hello<br></br>
-      
-      <Restaurant></Restaurant>
+      <Navbar></Navbar>
+      <Blog></Blog>
     </div>
   );
 }
