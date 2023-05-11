@@ -21,9 +21,9 @@ export default function Blog(){
         <div class="container">
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 " >
             { blogs.map(
-                (blog,i)=>{
+                (blog)=>{
                     return(
-                        <div class="row row-cols-1 g-3" key={i}>
+                        <div class="row row-cols-1 g-3" key={blog._id}>
                             <div class="card shadow-sm">
                                 <img class="bd-placeholder-img card-img-top" src={blog.image} alt="Thumbnail" width="100%" height="225"  preserveAspectRatio="xMidYMid slice" focusable="false">
                                 </img>
