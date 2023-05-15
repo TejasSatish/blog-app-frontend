@@ -1,12 +1,18 @@
 import axios from "axios"
-import React,{ useState, useEffect, setState } from "react";
+import React,{ useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-export default function NewBlog(){
-    const [postValue, setPostValue] = useState({
+export default function NewBlog({postData, postId}){
+    const [postValue, setPostValue] = useState(postData||{
         postName:"",
         authorName:"",
         text:"",
     })
+    const [idValue, setPostId]=useState(postId || null)
+    useEffect(()=>{
+        setPostValue(postData)
+        setPostId(postId)
+        console.log(postValue)
+    },[postData,postId])
 
     const handleInput=(e)=>{
         const {name, value}=e.target
@@ -20,16 +26,31 @@ export default function NewBlog(){
             authorName:"Tejas Satish",
             text:postValue.text,
         }
-        console.log(allInputValue)
-        axios.post("http://localhost:3001/blogs",allInputValue,{
+        if(idValue===null){
+            axios.post("http://localhost:3001/blogs/post",allInputValue,{
             'Content-Type': 'application/json'
-        })
+        })    
+        }else{
+            updatePost(idValue,allInputValue)
+            
+        console.log(allInputValue)
+        }
+
         setPostValue({
             postName:"",
             authorName:"",
             text:"",
         })
     }
+
+    const updatePost=(id,allInputValue)=>{
+        console.log('im here')
+        axios.put(`http://localhost:3001/blogs/put/${id}`,allInputValue,{
+            'Content-Type': 'application/json'
+        })
+    }
+
+
     return(
         <div className="col-md-9">
             <div className="col-md-11">
